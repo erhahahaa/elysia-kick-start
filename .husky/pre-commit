@@ -1,1 +1,11 @@
-bun lint-staged
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+if command -v bun >/dev/null 2>&1; then
+  bun lint-staged
+elif command -v npm >/dev/null 2>&1; then
+  npx lint-staged
+else
+  echo "Neither bun nor npm is found. Skipping linting."
+  exit 0
+fi
