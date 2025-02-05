@@ -1,7 +1,7 @@
-import { env } from 'bun';
 import 'dotenv/config';
 import { defineConfig } from 'drizzle-kit';
 import fs from 'fs';
+import { env } from 'process';
 
 const schemaFiles = fs.readdirSync('./src/schemas').filter((file) => {
   const content = fs.readFileSync(`./src/schemas/${file}`, 'utf8');
