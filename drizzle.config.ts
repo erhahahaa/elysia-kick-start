@@ -3,14 +3,14 @@ import { defineConfig } from 'drizzle-kit';
 import fs from 'fs';
 import { env } from 'process';
 
-const schemaFiles = fs.readdirSync('./src/schemas').filter((file) => {
-  const content = fs.readFileSync(`./src/schemas/${file}`, 'utf8');
+const schemaFiles = fs.readdirSync('./src/tables').filter((file) => {
+  const content = fs.readFileSync(`./src/tables/${file}`, 'utf8');
   return content.includes('pgTable');
 });
 
 export default defineConfig({
   out: './drizzle',
-  schema: schemaFiles.map((file) => `./src/schemas/${file}`),
+  schema: schemaFiles.map((file) => `./src/tables/${file}`),
   dialect: 'postgresql',
   dbCredentials: {
     host: env.DB_URL || 'localhost',
