@@ -12,7 +12,7 @@ export const AuthMiddleware = new Elysia()
   .use(
     jwt({
       name: 'jwt',
-      secret: Config.JWT_Secret,
+      secret: Config.JWT_SECRET,
       schema: JWTSchema,
       exp: Config.JWT_EXPIRES_IN,
     }),

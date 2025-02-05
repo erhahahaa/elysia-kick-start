@@ -30,8 +30,8 @@ export const Database = {
 export const Config = {
   NAME: normalizeMetaString(meta.name),
   VERSION: meta.version,
-  PORT: Bun.env.PORT || 3000,
-  JWT_Secret: Bun.env.JWT_SECRET || 'secret',
+  PORT: Bun.env.API_PORT || 3000,
+  JWT_SECRET: Bun.env.JWT_SECRET || 'secret',
   JWT_EXPIRES_IN: Math.floor(Date.now() / 1000) + 30 * 86400, // 30 days
   DB: Database,
   Logger,

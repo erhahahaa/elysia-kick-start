@@ -97,4 +97,4 @@ const app = new Elysia({
   )
   .use(AppRouter);
 
-app.listen(Config.PORT, () => {});
+app.listen(Config.PORT, () => { });

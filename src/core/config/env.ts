@@ -2,7 +2,7 @@ import { TypeCompiler } from '@sinclair/typebox/compiler';
 import { Static, t } from 'elysia';
 
 const EnvSchema = t.Object({
-  PORT: t.String(),
+  API_PORT: t.String(),
   JWT_SECRET: t.String(),
   SALT_ROUNDS: t.Number(),
 
@@ -17,7 +17,7 @@ type Env = Static<typeof EnvSchema>;
 
 declare global {
   namespace NodeJS {
-    interface ProcessEnv extends Env {}
+    interface ProcessEnv extends Env { }
   }
 }
 
