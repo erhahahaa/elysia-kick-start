@@ -1,15 +1,50 @@
 {
   "name": "elysia-kick-start",
   "version": "1.0.50",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun --bun run --watch src/index.ts",
+    "build": "bun build --target=bun --minify ./src/index.ts --outfile=./dist/server.js",
+    "start": "bun --bun run dist/server.js",
+    "db:push": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "prepare": "husky"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/bearer": "^1.2.0",
+    "@elysiajs/cors": "^1.2.0",
+    "@elysiajs/jwt": "^1.2.0",
+    "@elysiajs/server-timing": "^1.2.0",
+    "@elysiajs/swagger": "^1.2.0",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.39.1",
+    "drizzle-typebox": "^0.3.0",
+    "elysia": "latest",
+    "logixlysia": "^4.1.1",
+    "postgres": "^3.4.5"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@typescript-eslint/parser": "^8.23.0",
+    "bun-types": "latest",
+    "drizzle-kit": "^0.30.4",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3"
   },
-  "module": "src/index.js"
+  "override": {
+    "@sinclair/typebox": "^0.34.15"
+  },
+  "module": "src/index.js",
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
 }
